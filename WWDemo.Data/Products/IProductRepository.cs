@@ -11,5 +11,7 @@ namespace WWDemo.Data.Products
         Task<Product?> AddProduct(Product product);
 
         Task<Product?> UpdateProduct(Product product);
-    }
+
+        Task<Product?> GetProductBySerialNumber(string serialNumber
+        }
 }
