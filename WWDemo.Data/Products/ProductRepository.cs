@@ -57,6 +57,15 @@ namespace WWDemo.Data.Products
         {
             return GetProductBySerialNumber(serialNumber);
         }
+        private Task<Product?> GetProductByName(string name)
+        {
+            return GetQueryable().FirstOrDefaultAsync(x => x!.Name == name);
+        }
+
+        Task<Product?> IProductRepository.GetProductByName(string name)
+        {
+            return GetProductByName(name);
+        }
     }
 }
  
