@@ -10,4 +10,6 @@
 		public string? Type { get; set; }
         public string? Type1 { get; set; }
     }
+		public string? Owner { get; set; }
+	}
 }
