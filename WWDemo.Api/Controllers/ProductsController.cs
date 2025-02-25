@@ -43,15 +43,23 @@ namespace WWDemo.Api.Controllers
 			return result;
 		}
 
-		[HttpGet("serial-number")]
-		public async Task<IActionResult> GetProductBySerialNumber([FromRoute(Name = "serial-number")]int serialNumber)
+		[HttpGet("serial-number")] 
+		public async Task<IActionResult> GetProductBySerialNumber([FromRoute] string serialNumber)
 		{
-            var result = await _mediator.Send(new GetProductBySerialNumberQuery());// map serial number
+            var result = await _mediator.Send(new GetProductBySerialNumberQuery() { SerialNumber = serialNumber});// map serial number
             
 			return Ok();
 		}
 
-		[HttpDelete]
+		[HttpGet("name")]
+		public async Task<IActionResult> GetProductByName([FromRoute] string name)
+		{
+			var result = await _mediator.Send(new GetProductByNameQuery() { name = name });
+			return Ok();
+		}
+        
+
+        [HttpDelete]
 		public async Task<IActionResult> DeleteProduct()
 		{
 			return Ok();

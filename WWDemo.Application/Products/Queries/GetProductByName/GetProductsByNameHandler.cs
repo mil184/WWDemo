@@ -4,11 +4,11 @@ using WWDemo.Data.Products;
 
 namespace WWDemo.Application.Products.Queries.GetProductBySerialNumber
 {
-    public class GetProductsByName : IRequestHandler<GetProductBySerialNumberQuery, ProductRepresentation>
+    public class GetProductByNameHandler : IRequestHandler<GetProductBySerialNumberQuery, ProductRepresentation>
     {
         private readonly IProductRepository _productRepository;
 
-        public GetProductsByName(IProductRepository productRepository)
+        public GetProductByNameHandler(IProductRepository productRepository)
         {
             _productRepository = productRepository;
         }

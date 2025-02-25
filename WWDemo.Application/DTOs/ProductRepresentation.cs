@@ -13,5 +13,6 @@
 		public string? PremiumPrice { get; set; }
         public string? Warrning { get; set; }
         public string? Type3 { get; set; }
+
     }
 }
