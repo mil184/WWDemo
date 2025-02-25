@@ -74,7 +74,7 @@ namespace WWDemo.Data.Products
             //}
 
             var products = await GetAllProducts();
-            var productsByType = products.Where(p => p.Type1 == type).ToList();
+            var productsByType = products.Where(p => p.Type == type).ToList();
             return productsByType;
         }
 
