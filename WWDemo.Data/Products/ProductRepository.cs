@@ -82,6 +82,16 @@ namespace WWDemo.Data.Products
         {
             return GetProductsByType(type);
         }
+
+        private Task<Product?> GetProductByName(string name)
+        {
+            return GetQueryable().FirstOrDefaultAsync(x => x!.Name == name);
+        }
+
+        Task<Product?> IProductRepository.GetProductByName(string name)
+        {
+            return GetProductByName(name);
+        }
     }
 }
  
