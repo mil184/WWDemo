@@ -13,9 +13,9 @@ namespace WWDemo.Data.Products
             _apiDbContext = apiDbContext;
         }
 
-        public Task<List<Product?>> GetAllProducts()
+        public async Task<List<Product?>> GetAllProducts()
         {
-            return Task.Run(() => GetQueryable().ToList());
+            return await Task.Run(() => GetQueryable().ToList());
         }
 
         public Task<Product?> GetProductById(Guid productId)
@@ -57,6 +57,32 @@ namespace WWDemo.Data.Products
         {
             return GetProductBySerialNumber(serialNumber);
         }
+
+        private async Task<List<Product?>> GetProductsByType(string type)
+        {
+            // var products = (await _productRepository.GetAllProducts()).Where(p => p.Type == request.Type).ToList(); 
+
+            //var products = await _productRepository.GetAllProducts();
+            //List<Product> productsByType = new List<Product>();
+            //foreach (Product p in products)
+            //{
+
+            //    if (p.GetType() == request.GetType())
+            //    {
+            //        productsByType.Add(p);
+            //    }
+            //}
+
+            var products = await GetAllProducts();
+            var productsByType = products.Where(p => p.Type == type).ToList();
+            return productsByType;
+        }
+
+        Task<List<Product?>> IProductRepository.GetProductsByType(string type)
+        {
+            return GetProductsByType(type);
+        }
+
         private Task<Product?> GetProductByName(string name)
         {
             return GetQueryable().FirstOrDefaultAsync(x => x!.Name == name);

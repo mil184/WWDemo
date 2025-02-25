@@ -10,6 +10,6 @@ namespace WWDemo.Application.Products.Queries.GetProductsByType
 {
     public class GetProductsByTypeQuery : IRequest<List<DTOs.ProductRepresentation>>
     {
-        public string? Type { get; set; }
+        public string? Type1 { get; set; }
     }
 }

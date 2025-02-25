@@ -68,7 +68,7 @@ namespace WWDemo.Api.Controllers
         [ProducesResponseType(typeof(List<ProductRepresentation>), StatusCodes.Status200OK)]
         public async Task<List<ProductRepresentation>> GetProductsByType([FromRoute] string type)
         {
-            var result = await _mediator.Send(new GetProductsByTypeQuery() { Type = type });
+            var result = await _mediator.Send(new GetProductsByTypeQuery() { Type1 = type });
 
             return result;
         }

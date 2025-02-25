@@ -18,24 +18,8 @@ namespace WWDemo.Application.Products.Queries.GetProductsByType
 
         public async Task<List<DTOs.ProductRepresentation>> Handle(GetProductsByTypeQuery request, CancellationToken cancellationToken)
         {
-            // var products = (await _productRepository.GetAllProducts()).Where(p => p.Type == request.Type).ToList(); 
-
-            var products = await _productRepository.GetAllProducts();
-            var productsByType = products.Where(p => p.GetType() == request.GetType()).ToList();
-
-            //var products = await _productRepository.GetAllProducts();
-            //List<Product> productsByType = new List<Product>();
-            //foreach (Product p in products)
-            //{
-
-            //    if (p.GetType() == request.GetType())
-            //    {
-            //        productsByType.Add(p);
-            //    }
-
-            //}
-
-            var result = _mapper.Map<List<Models.Product>, List<DTOs.ProductRepresentation>>(productsByType);
+            var products = await _productRepository.GetProductsByType(request.Type1);
+            var result = _mapper.Map<List<Models.Product>, List<DTOs.ProductRepresentation>>(products);
             return result;
         }
     }
