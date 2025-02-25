@@ -1,7 +1,5 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Cors;
 using WWDemo.Api.Requests;
 using WWDemo.Application.DTOs;
 using WWDemo.Application.Products.Commands.AddProduct;
@@ -55,8 +53,15 @@ namespace WWDemo.Api.Controllers
             {
                 return NotFound("Product not found");
             }
+            
+			return Ok();
+		}
 
-            return Ok();
+		[HttpGet("name")]
+		public async Task<IActionResult> GetProductByName([FromRoute] string name)
+		{
+			var result = await _mediator.Send(new GetProductByNameQuery() { name = name });
+			return Ok();
 		}
 
         [HttpGet("type")]
