@@ -9,7 +9,7 @@ namespace WWDemo.Application.Products.Queries.GetProductBySerialNumber
         private readonly IProductRepository _productRepository;
 
         public GetProductByNameHandler(IProductRepository productRepository)
-        {
+{
             _productRepository = productRepository;
         }
 

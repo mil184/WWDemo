@@ -7,7 +7,7 @@
         public string? Name { get; set; }
         public string? Price { get; set; }
         public string? Category { get; set; }
-        public string? Type1 { get; set; }
+        public string? Type { get; set; }
         public string? Owner { get; set; }
         public string? Warrning { get; set; }
 
